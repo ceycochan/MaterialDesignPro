@@ -1,0 +1,57 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="MainActivityTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimaryMain</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkMain</item>
+        <item name="colorAccent">@color/colorAccentMain</item>
+    </style>
+
+
+
+    <!--以下为使用中-->
+
+    <!--自定义SearchView主题-->
+    <style name="SearchViewActivityTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/netease_red</item>
+        <item name="colorPrimaryDark">@color/netease_red</item>
+        <!--Toolbar下menu中item的图标颜色-->
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <!--引入自定义的SearchView样式-->
+        <item name="searchViewStyle">@style/SearchViewStyle</item>
+    </style>
+
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="searchIcon">@mipmap/ic_search</item>
+        <item name="searchHintIcon">@null</item>
+    </style>
+
+
+    <!--标题与NavigationIcon的距离-->
+    <style name="Toolbar.MyStyle" parent="Base.Widget.AppCompat.Toolbar">
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+    </style>
+
+
+    <style name="SearchBilibiliActivityTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/netease_red</item>
+        <item name="colorPrimaryDark">@color/netease_red</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:textColorPrimary">@color/colorWhite</item>
+        <!--Toolbar下menu中item的图标颜色-->
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <!--引入自定义的SearchView样式-->
+        <item name="searchViewStyle">@style/SearchViewStyle</item>
+    </style>
+
+</resources>
