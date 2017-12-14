@@ -37,7 +37,7 @@ public class SearchHistoryDB extends SQLiteOpenHelper {
     }
 
     /**
-     * 查询全部搜索记录
+     * 查询全部搜索记录$
      */
     public ArrayList<String> queryAllHistory() {
         ArrayList<String> historys = new ArrayList<>();
