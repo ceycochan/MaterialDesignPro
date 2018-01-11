@@ -28,6 +28,10 @@ public class MainActivity extends BaseActivity {
         jumpToActivity(SearchViewBilibili.class);
     }
 
+    public void customSearch(View view) {
+        jumpToActivity(SearchCustomActivity.class);
+    }
+
 
     //toolbar navigation 设置
 

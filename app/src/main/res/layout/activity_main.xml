@@ -37,11 +37,19 @@
 
 
             <Button
-                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:onClick="searchView1"
                 android:text="B站搜索样式"
+                android:textAllCaps="false" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:onClick="customSearch"
+                android:text="EditText"
                 android:textAllCaps="false" />
 
         </LinearLayout>

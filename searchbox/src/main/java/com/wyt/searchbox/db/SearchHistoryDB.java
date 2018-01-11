@@ -40,7 +40,7 @@ public class SearchHistoryDB extends SQLiteOpenHelper {
      * 查询全部搜索记录$
      */
     public ArrayList<String> queryAllHistory() {
-        ArrayList<String> historys = new ArrayList<>();
+        ArrayList<String> histories = new ArrayList<>();
         //获取数据库对象
         SQLiteDatabase db = getReadableDatabase();
         //查询表中的数据
@@ -48,12 +48,29 @@ public class SearchHistoryDB extends SQLiteOpenHelper {
         //获取name列的索引
         for (cursor.moveToFirst(); !(cursor.isAfterLast()); cursor.moveToNext()) {
             String history = cursor.getString(1);
-            historys.add(history);
+            histories.add(history);
         }
         cursor.close();//关闭结果集
         db.close();//关闭数据库对象
-        return historys;
+        return histories;
     }
+
+
+    /**
+     * 查询某条数据是否存在
+     */
+
+    public boolean isHistory(String keyword) {
+//        boolean isHistory = false;
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.query(TABLE_NAME, null, "history=?", new String[]{keyword}, null, null, null);
+        if (cursor.moveToNext()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     /**
      * 插入数据到数据库

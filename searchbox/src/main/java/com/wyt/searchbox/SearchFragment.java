@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -79,9 +80,7 @@ public class SearchFragment extends DialogFragment implements DialogInterface.On
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.dialog_search, container, false);
-
         init();//实例化
-
         return view;
     }
 
@@ -106,6 +105,7 @@ public class SearchFragment extends DialogFragment implements DialogInterface.On
         searchHistoryDB = new SearchHistoryDB(getContext(), SearchHistoryDB.DB_NAME, null, 1);
 
         allHistorys = searchHistoryDB.queryAllHistory();
+//        Log.d("cg","DB下搜索历史数目:"+allHistorys.size()+"首项:"+allHistorys.get(0));
         setAllHistorys();
         //初始化recyclerView
         rvSearchHistory.setLayoutManager(new LinearLayoutManager(getContext()));//list类型
@@ -115,6 +115,7 @@ public class SearchFragment extends DialogFragment implements DialogInterface.On
         //设置删除单个记录的监听
         searchHistoryAdapter.setOnItemClickListener(this);
         //监听编辑框文字改变
+        // TODO: 2018-1-4 测试的作用
         etSearchKeyword.addTextChangedListener(new TextWatcherImpl());
         //监听点击
         ivSearchBack.setOnClickListener(this);
@@ -209,6 +210,7 @@ public class SearchFragment extends DialogFragment implements DialogInterface.On
 
         @Override
         public void afterTextChanged(Editable editable) {
+            Log.d("cg", "搜索执行了");
             String keyword = editable.toString();
             if (TextUtils.isEmpty(keyword.trim())) {
                 setAllHistorys();
@@ -244,14 +246,24 @@ public class SearchFragment extends DialogFragment implements DialogInterface.On
         mCircularRevealAnim.hide(ivSearchSearch, view);
     }
 
+    // 执行搜索,+去重
     private void search() {
         String searchKey = etSearchKeyword.getText().toString();
         if (TextUtils.isEmpty(searchKey.trim())) {
             Toast.makeText(getContext(), "请输入关键字", Toast.LENGTH_SHORT).show();
         } else {
-            iOnSearchClickListener.OnSearchClick(searchKey);//接口回调
-            searchHistoryDB.insertHistory(searchKey);//插入到数据库
-            hideAnim();
+            iOnSearchClickListener.OnSearchClick(searchKey);  //接口回调 @ 通知Fragment所属Activity搜索的关键词
+
+            if (searchHistoryDB.isHistory(searchKey)) {
+                hideAnim();
+            } else {
+                searchHistoryDB.insertHistory(searchKey);//插入到数据库
+                hideAnim();
+            }
+
+
+//            searchHistoryDB.insertHistory(searchKey);//插入到数据库
+//            hideAnim();
         }
     }
 
@@ -266,6 +278,7 @@ public class SearchFragment extends DialogFragment implements DialogInterface.On
     private void setAllHistorys() {
         historys.clear();
         historys.addAll(allHistorys);
+        //确认有无数据时顶端divider显示有无
         checkHistorySize();
     }
 
@@ -279,6 +292,11 @@ public class SearchFragment extends DialogFragment implements DialogInterface.On
         searchHistoryAdapter.notifyDataSetChanged();
         checkHistorySize();
     }
+
+
+    /**
+     * @回调 Fragment所属的Activity获取搜索关键词
+     */
 
     private IOnSearchClickListener iOnSearchClickListener;
 

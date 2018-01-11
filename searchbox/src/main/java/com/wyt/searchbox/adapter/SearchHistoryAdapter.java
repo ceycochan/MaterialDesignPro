@@ -31,8 +31,10 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
         return holder;
     }
 
+
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
+
         holder.historyInfo.setText(historys.get(position));
 
         holder.historyInfo.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +67,7 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
             super(view);
             historyInfo = (TextView) view.findViewById(R.id.tv_item_search_history);
             delete = (ImageView) view.findViewById(R.id.iv_item_search_delete);
+
         }
     }
 

@@ -5,6 +5,7 @@ package com.nshane.materialdesignpro.ui;
  */
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -57,6 +58,7 @@ public class SearchViewActivity extends AppCompatActivity {
         initToolbar();
         requestPermission();
 
+
     }
 
 
@@ -90,10 +92,18 @@ public class SearchViewActivity extends AppCompatActivity {
 
 
     // invoked when menu is initialized by 1st time
+    @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+
         getMenuInflater().inflate(R.menu.menu_search_view, menu);
+
+
         MenuItem searchItem = menu.findItem(R.id.menu_search);
+
+//        searchItem.collapseActionView();
+//        searchItem.expandActionView();
 
 
         //通过MenuItem得到SearchView
@@ -150,6 +160,7 @@ public class SearchViewActivity extends AppCompatActivity {
 
     /**
      * 模糊查询
+     *
      * @param key
      */
 

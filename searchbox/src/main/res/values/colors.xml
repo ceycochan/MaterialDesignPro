@@ -7,4 +7,11 @@
     <color name="text_grey">#9DA0A3</color>
 
     <color name="divider">#e6e6e6</color>
+
+    <color name="rank_1">#FF0000</color>
+    <color name="rank_2">#F57C23</color>
+    <color name="rank_3">#F5A623</color>
+    <color name="rank_default">#4A4A4A</color>
+
+
 </resources>
