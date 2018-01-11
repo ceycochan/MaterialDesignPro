@@ -7,5 +7,5 @@
  See more @ Preview.
 ## Preview
 
-![Alt text](https://github.com/ceycochan/MaterialDesignPro/blob/master/app/src/main/res/drawable/bilibiliSearch.jpg)
-![Alt text](https://github.com/ceycochan/MaterialDesignPro/blob/master/app/src/main/res/drawable/localSearch.jpg)
+![Alt text](https://github.com/ceycochan/MaterialDesignPro/blob/master/app/src/main/res/drawable/bilibili_search.jpg)
+![Alt text](https://github.com/ceycochan/MaterialDesignPro/blob/master/app/src/main/res/drawable/local_search.jpg)
