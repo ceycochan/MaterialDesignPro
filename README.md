@@ -1,10 +1,12 @@
-# MaterialDesignPro
+
 
 # MaterialDesignPro
 
- ## Demo Description：
+### Demo Description：
  a  demo for fuzzy search & related with local db,featured with BilibiliSearch Style. 
- See more @ Preview.
+ 
+ ###See more @ Preview.
+ 
 ## Preview
 
 ![Alt text](https://github.com/ceycochan/MaterialDesignPro/blob/master/app/src/main/res/drawable/bilibili_search.jpg)
